@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterOutlet
+  ],
+  template: `<router-outlet></router-outlet>`,
+  styles: [
+  ]
 })
-export class AppComponent {
-  title = 'cartcart';
+export default class AppComponent {
+
 }

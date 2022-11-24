@@ -7,7 +7,15 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "flat": true,
+          "style": "scss",
+          "inlineTemplate": true,
+          "inlineStyle": true,
+          "standalone": true
+        },
+        "@schematics/angular:directive": {
+          "flat": true,
+          "standalone": true
         }
       },
       "root": "",
@@ -100,5 +108,10 @@
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   }
 }
