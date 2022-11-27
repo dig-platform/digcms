@@ -1,29 +1,29 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromNode from './node.reducer';
+import * as FromNode from './node.reducer';
 
-export const selectNodeState = createFeatureSelector<fromNode.State>(
-  fromNode.nodeFeatureKey
+export const selectNodeState = createFeatureSelector<FromNode.State>(
+  FromNode.nodeFeatureKey
 );
 
 export const selectNodeIds = createSelector(
   selectNodeState,
-  fromNode.selectNodeIds // shorthand for NodesState => fromNode.selectNodeIds(NodesState)
+  FromNode.selectNodeIds // shorthand for NodesState => FromNode.selectNodeIds(NodesState)
 );
 export const selectNodeEntities = createSelector(
   selectNodeState,
-  fromNode.selectNodeEntities
+  FromNode.selectNodeEntities
 );
 export const selectAllNodes = createSelector(
   selectNodeState,
-  fromNode.selectAllNodes
+  FromNode.selectAllNodes
 );
 export const selectNodeTotal = createSelector(
   selectNodeState,
-  fromNode.selectNodeTotal
+  FromNode.selectNodeTotal
 );
 export const selectCurrentNodeId = createSelector(
   selectNodeState,
-  fromNode.getSelectedNodeId
+  FromNode.getSelectedNodeId
 );
 
 export const selectCurrentNode = createSelector(
