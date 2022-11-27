@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, Input, OnInit} from '@angular/core';
+import {CommonModule, Location} from '@angular/common';
 import {SlotDirective} from '../../directives/slot.directive';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {BackButtonComponent} from '../back-button.component';
 
 @Component({
   selector: 'app-layout-header',
   standalone: true,
-  imports: [CommonModule, SlotDirective],
+  imports: [CommonModule, SlotDirective, MatToolbarModule, MatIconModule, MatButtonModule, BackButtonComponent],
   template: `
-    <div class="layout-header">
+    <mat-toolbar class="layout-header">
       <div class="layout-header-start">
+        <app-back-button *ngIf="showBackButton"></app-back-button>
         <ng-content select="[slot]='start'"></ng-content>
       </div>
       <div class="layout-header-main">
@@ -17,26 +22,22 @@ import {SlotDirective} from '../../directives/slot.directive';
       <div class="layout-header-end">
         <ng-content select="[slot]='end'"></ng-content>
       </div>
-    </div>
+    </mat-toolbar>
   `,
   styles: [`
-    .layout-header{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      background: #333;
-      color: #fff;
-      padding: var(--gutter-md)
-    }
-    .layout-header-start{
-    }
     .layout-header-main{
       flex: 1;
     }
-    .layout-header-end{
-    }
   `]
 })
-export class LayoutHeaderComponent {
+export class LayoutHeaderComponent implements OnInit {
+  @Input() showBackButton: boolean = true;
+
+  constructor(private location: Location) {
+  }
+
+  ngOnInit(): void {
+    this.showBackButton = !! this.location.path();
+  }
 
 }

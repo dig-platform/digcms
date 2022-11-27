@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
         <ng-content select="app-layout-header"></ng-content>
       </div>
       <div class="layout-main-wrapper">
-        <ng-content select="app-layout-main"></ng-content>
+        <ng-content></ng-content>
       </div>
       <div class="layout-footer-wrapper">
         <ng-content select="app-layout-footer"></ng-content>

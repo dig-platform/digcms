@@ -4,11 +4,11 @@ export const ROUTES: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    loadComponent: () => import('./pages/home.component')
+    loadComponent: () => import('./pages/home/home.component')
   },
   {
-    path: 'account/sign-up',
-    loadComponent: () => import('./pages/account/sign-up.component')
+    path: 'demo',
+    loadChildren: () => import('./pages/demo/demo.routes').then(r => r.ROUTES)
   },
   // ... other application routes that don't
   //     have access to ADMIN_API_KEY or AdminService.
