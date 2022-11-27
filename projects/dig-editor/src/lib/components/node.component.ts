@@ -21,6 +21,8 @@ import * as NodeSelectors from '../store/editor/node/node.selectors';
         (keydown.backspace)="deleteIfEmpty($event)"
         (keydown.arrowDown)="next($event)"
         (keydown.arrowUp)="previous($event)"
+        (keydown.arrowRight)="nextIfAtEnd($event)"
+        (keydown.arrowLeft)="previousIfAtStart($event)"
       ></textarea>
     </div>
   `,
@@ -92,5 +94,19 @@ export class NodeComponent implements OnInit, AfterViewInit{
   previous(ev: any) {
     ev.preventDefault();
     this.store.dispatch(NodeActions.previousNode());
+  }
+
+  nextIfAtEnd(ev: any) {
+    if (this.input.nativeElement.selectionEnd === this.control.value.length) {
+      ev.preventDefault();
+      this.store.dispatch(NodeActions.nextNode());
+    }
+  }
+
+  previousIfAtStart(ev: any) {
+    if (this.input.nativeElement.selectionStart === 0) {
+      ev.preventDefault();
+      this.store.dispatch(NodeActions.previousNode());
+    }
   }
 }
