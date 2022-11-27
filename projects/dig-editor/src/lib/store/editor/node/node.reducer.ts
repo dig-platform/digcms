@@ -43,6 +43,15 @@ export const reducer = createReducer(
       selectedNodeId: newNode.id
     };
   }),
+  on(NodeActions.deleteNode, (state, {id}) => {
+    const ids = [...state.ids] as string[];
+    const currentIndex = ids.findIndex(idx => idx === id);
+    const previous = ids[currentIndex - 1];
+    return {
+      ...adapter.removeOne(id, state),
+      selectedNodeId: previous
+    }
+  })
 );
 
 export const nodeFactory = (): DigEditorNode => ({
