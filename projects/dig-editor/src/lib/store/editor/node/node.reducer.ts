@@ -51,6 +51,24 @@ export const reducer = createReducer(
       ...adapter.removeOne(id, state),
       selectedNodeId: previous
     }
+  }),
+  on(NodeActions.nextNode, state => {
+    const ids = [...state.ids] as string[];
+    const currentIndex = ids.findIndex(id => id === getSelectedNodeId(state));
+    const next = ids[currentIndex + 1];
+    return {
+      ...state,
+      selectedNodeId: next
+    }
+  }),
+  on(NodeActions.previousNode, state => {
+    const ids = [...state.ids] as string[];
+    const currentIndex = ids.findIndex(id => id === getSelectedNodeId(state));
+    const next = ids[currentIndex - 1];
+    return {
+      ...state,
+      selectedNodeId: next
+    }
   })
 );
 

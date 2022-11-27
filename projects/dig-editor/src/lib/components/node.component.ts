@@ -19,6 +19,8 @@ import * as NodeSelectors from '../store/editor/node/node.selectors';
         (focusin)="setActive()"
         (keydown.enter)="insertAfter($event)"
         (keydown.backspace)="deleteIfEmpty($event)"
+        (keydown.arrowDown)="next($event)"
+        (keydown.arrowUp)="previous($event)"
       ></textarea>
     </div>
   `,
@@ -44,11 +46,6 @@ import * as NodeSelectors from '../store/editor/node/node.selectors';
 export class NodeComponent implements OnInit, AfterViewInit{
   @Input() node!: DigEditorNode;
 
-  @Output() previous: EventEmitter<DigEditorNode> = new EventEmitter<DigEditorNode>();
-  @Output() next: EventEmitter<DigEditorNode> = new EventEmitter<DigEditorNode>();
-  @Output() delete: EventEmitter<DigEditorNode> = new EventEmitter<DigEditorNode>();
-  @Output() changed: EventEmitter<DigEditorNode> = new EventEmitter<DigEditorNode>();
-
   @ViewChild('input') input!: ElementRef;
 
   readonly control = new FormControl();
@@ -68,10 +65,14 @@ export class NodeComponent implements OnInit, AfterViewInit{
     this.store.dispatch(NodeActions.setActiveNode({id: this.node.id}))
   }
 
+  next(ev: Event) {
+    ev.preventDefault();
+    this.store.dispatch(NodeActions.nextNode());
+  }
+
   insertAfter(ev: Event) {
     ev.preventDefault();
     this.store.dispatch(NodeActions.insertAfter());
-    return false;
   }
 
   ngAfterViewInit(): void {
@@ -86,5 +87,10 @@ export class NodeComponent implements OnInit, AfterViewInit{
     if (this.control.value.trim().length === 0) {
       this.store.dispatch(NodeActions.deleteNode({id: this.node.id}))
     }
+  }
+
+  previous(ev: any) {
+    ev.preventDefault();
+    this.store.dispatch(NodeActions.previousNode());
   }
 }
