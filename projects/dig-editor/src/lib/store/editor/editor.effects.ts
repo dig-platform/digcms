@@ -1,20 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { concatMap } from 'rxjs/operators';
+import {concatMap, map} from 'rxjs/operators';
 import { Observable, EMPTY } from 'rxjs';
 import * as EditorActions from './editor.actions';
+import * as NodeActions from './node/node.actions';
 
 @Injectable()
 export class EditorEffects {
 
 
-  loadEditors$ = createEffect(() => {
-    return this.actions$.pipe( 
-
-      ofType(EditorActions.loadEditors),
-      /** An EMPTY observable only emits completion. Replace with your own observable API request */
-      concatMap(() => EMPTY as Observable<{ type: string }>)
+  loadDemo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(EditorActions.loadDemo),
+      map(() => NodeActions.setNodes({nodes:
+        [
+          {
+            id: 'headline',
+            content: 'DigEditor',
+            format: 'h1',
+            position: 0
+          },
+          {
+            id: 'description',
+            content: 'Reactive Angular editor',
+            format: 'p',
+            position: 1
+          },
+        ]
+      }))
     );
   });
 

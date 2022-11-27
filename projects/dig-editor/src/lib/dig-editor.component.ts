@@ -1,11 +1,12 @@
 import {Component, ViewChildren} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {DigEditorNode} from './interfaces/dig-editor-node';
-import {DigEditorService} from './dig-editor.service';
+
 import {NodeComponent} from './components/node.component';
 import {Store} from '@ngrx/store';
-import {selectNodes} from './store/editor/editor.selectors';
-import {deleteNode, setNodes} from './store/editor/editor.actions';
+import * as editorActions from './store/editor/editor.actions';
+import * as nodeActions from './store/editor/node/node.actions';
+import * as nodeSelectors from './store/editor/node/node.selectors';
 
 @Component({
   selector: 'dig-editor',
@@ -24,20 +25,11 @@ import {deleteNode, setNodes} from './store/editor/editor.actions';
   ]
 })
 export class DigEditorComponent {
-  readonly nodes$: Observable<DigEditorNode[]> = this.store.select(selectNodes);
+  readonly nodes$: Observable<DigEditorNode[]> = this.store.select(nodeSelectors.selectAllNodes);
 
   @ViewChildren(NodeComponent) nodes!: NodeComponent[];
 
   constructor(private store: Store) {
-    this.store.dispatch(setNodes({nodes: [
-        {
-          format: 'h1',
-          content: 'Welcome to the Dig Editor'
-        },
-        {
-          format: 'p',
-          content: 'This is some sample content'
-        },
-      ]}))
+    this.store.dispatch(editorActions.loadDemo());
   }
 }

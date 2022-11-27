@@ -4,10 +4,12 @@ import {ToolbarComponent} from './components/toolbar.component';
 import {BodyComponent} from './components/body.component';
 import {NodeComponent} from './components/node.component';
 import {CommonModule} from '@angular/common';
-import { EffectsModule } from '@ngrx/effects';
-import { EditorEffects } from './store/editor/editor.effects';
 import {StoreModule} from '@ngrx/store';
-import {editorFeatureKey, reducer} from './store/editor/editor.reducer';
+import * as fromEditor from './store/editor/editor.reducer';
+import * as fromNode from './store/editor/node/node.reducer';
+import {EffectsModule} from '@ngrx/effects';
+import {EditorEffects} from './store/editor/editor.effects';
+import {NodeEffects} from './store/editor/node/node.effects';
 
 
 
@@ -20,8 +22,9 @@ import {editorFeatureKey, reducer} from './store/editor/editor.reducer';
     ToolbarComponent,
     BodyComponent,
     NodeComponent,
-    StoreModule.forFeature(editorFeatureKey, reducer),
-    EffectsModule.forFeature([EditorEffects])
+    StoreModule.forFeature(fromEditor.editorFeatureKey, fromEditor.reducer),
+    StoreModule.forFeature(fromNode.nodeFeatureKey, fromNode.reducer),
+    EffectsModule.forFeature([EditorEffects, NodeEffects])
   ],
   exports: [
     DigEditorComponent

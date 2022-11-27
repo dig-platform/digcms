@@ -1,9 +1,6 @@
 export interface DigEditorNode {
-  focus?: number;
-  selection?: {
-    start: number,
-    end: number
-  };
+  id: string;
+  position?: number;
   format: string;
   content: string;
 }

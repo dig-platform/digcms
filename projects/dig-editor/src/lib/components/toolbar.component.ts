@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {DigEditorService} from '../dig-editor.service';
 
 @Component({
   selector: 'dig-editor-toolbar',
@@ -36,6 +35,6 @@ import {DigEditorService} from '../dig-editor.service';
 })
 export class ToolbarComponent {
 
-  constructor(private editor: DigEditorService) {
+  constructor() {
   }
 }

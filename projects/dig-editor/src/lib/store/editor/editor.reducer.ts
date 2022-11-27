@@ -9,10 +9,10 @@ export interface State extends DigEditor{
 }
 
 export const initialState: State = {
-  nodes: []
+  status: '', toolbar: []
 };
 
 export const reducer = createReducer(
   initialState,
-  on(EditorActions.setNodes, (state, {nodes}) => ({...state, nodes: [...nodes]})),
+
 );
