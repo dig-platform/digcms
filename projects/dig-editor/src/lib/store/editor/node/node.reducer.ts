@@ -2,6 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import * as NodeActions from './node.actions';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import {DigEditorNode} from '../../../interfaces/dig-editor-node';
+import {v4 as uuid} from 'uuid';
 
 export const nodeFeatureKey = 'node';
 
@@ -28,8 +29,27 @@ export const initialState: State =
 
 export const reducer = createReducer(
   initialState,
-  on(NodeActions.setNodes, (state, {nodes}) => adapter.addMany(nodes, state))
+  on(NodeActions.setNodes, (state, {nodes}) => adapter.addMany(nodes, state)),
+  on(NodeActions.setActiveNode, (state, {id}) => ({...state, selectedNodeId: id})),
+  on(NodeActions.insertAfter, (state) => {
+    const ids = [...state.ids] as string[];
+    const currentIndex = ids.findIndex(id => id === getSelectedNodeId(state));
+    const newNode = nodeFactory();
+    ids.splice(currentIndex + 1, 0, newNode.id)
+    return {
+      ...state,
+      entities: {...state.entities, [newNode.id]: newNode},
+      ids: [...ids],
+      selectedNodeId: newNode.id
+    };
+  }),
 );
+
+export const nodeFactory = (): DigEditorNode => ({
+  id: uuid() + '',
+  content: '',
+  format: 'p'
+})
 
 export const getSelectedNodeId = (state: State) => state.selectedNodeId;
 

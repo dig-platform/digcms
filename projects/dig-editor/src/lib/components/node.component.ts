@@ -1,8 +1,10 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {DigEditorNode} from '../interfaces/dig-editor-node';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Store} from '@ngrx/store';
+import * as NodeActions from '../store/editor/node/node.actions';
+import * as NodeSelectors from '../store/editor/node/node.selectors';
 
 @Component({
   selector: 'dig-editor-node',
@@ -12,12 +14,10 @@ import {Store} from '@ngrx/store';
     <div class="dig-editor-node">
       <textarea
         #input
-        [class]="inputClass"
+        [class]="['dig-editor-input', this.node.format]"
         [formControl]="control"
-        [rows]="rows"
-        (keydown.backspace)="handleDelete()"
-        (keydown.tab)="handleTab()"
-        (keydown.return)="handleReturn()"
+        (focusin)="setActive()"
+        (keydown.enter)="insertAfter($event)"
       ></textarea>
     </div>
   `,
@@ -40,7 +40,7 @@ import {Store} from '@ngrx/store';
     }
   `]
 })
-export class NodeComponent implements OnInit{
+export class NodeComponent implements OnInit, AfterViewInit{
   @Input() node!: DigEditorNode;
 
   @Output() previous: EventEmitter<DigEditorNode> = new EventEmitter<DigEditorNode>();
@@ -52,44 +52,32 @@ export class NodeComponent implements OnInit{
 
   readonly control = new FormControl();
 
-  constructor(private store: Store) {
-
+  constructor(readonly store: Store) {
   }
 
-  get inputClass() {
-    return ['dig-editor-input', this.node.format];
-  }
-
-  get rows() {
-    return 1;
-  }
-
-  get nodeState() {
-    return {
-      ...this.node,
-      content: this.control.value
-    }
+  setFocus() {
+    this.input.nativeElement.focus();
   }
 
   ngOnInit(): void {
     this.control.setValue(this.node.content);
   }
 
-  handleDelete() {
-    if (this.control.value.trim().length === 0) {
-      this.delete.emit(this.nodeState);
-    }
+  setActive() {
+    this.store.dispatch(NodeActions.setActiveNode({id: this.node.id}))
   }
 
-  handleTab() {
-
+  insertAfter(ev: Event) {
+    ev.preventDefault();
+    this.store.dispatch(NodeActions.insertAfter());
+    return false;
   }
 
-  handleReturn() {
-
-  }
-
-  setFocus() {
-    this.input.nativeElement.setFocus();
+  ngAfterViewInit(): void {
+    this.store.select(NodeSelectors.selectCurrentNodeId).subscribe(id => {
+      if (id && id === this.node.id) {
+        setTimeout(() => this.setFocus(), 25);
+      }
+    })
   }
 }
