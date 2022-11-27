@@ -16,10 +16,10 @@ export const setNodes = createAction(
 //   props<{node: DigEditorNode, position?: number}>()
 // )
 //
-// export const deleteNode = createAction(
-//   '[Editor] Delete Node',
-//   props<{position?: number}>()
-// )
+export const deleteNode = createAction(
+  '[Editor] Delete Node',
+  props<{id: string}>()
+)
 
 export const setActiveNode = createAction(
   '[Editor] Set Active Node',

@@ -18,6 +18,7 @@ import * as NodeSelectors from '../store/editor/node/node.selectors';
         [formControl]="control"
         (focusin)="setActive()"
         (keydown.enter)="insertAfter($event)"
+        (keydown.backspace)="deleteIfEmpty($event)"
       ></textarea>
     </div>
   `,
@@ -79,5 +80,11 @@ export class NodeComponent implements OnInit, AfterViewInit{
         setTimeout(() => this.setFocus(), 25);
       }
     })
+  }
+
+  deleteIfEmpty($event: any) {
+    if (this.control.value.trim().length === 0) {
+      this.store.dispatch(NodeActions.deleteNode({id: this.node.id}))
+    }
   }
 }
