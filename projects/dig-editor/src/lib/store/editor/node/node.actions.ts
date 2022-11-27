@@ -29,14 +29,14 @@ export const setActiveNode = createAction(
 export const insertAfter = createAction(
   '[Editor] Insert After'
 )
-//
-// export const nextNode = createAction(
-//   '[Editor] Next Node'
-// )
-//
-// export const previousNode = createAction(
-//   '[Editor] Previous Node'
-// )
+
+export const nextNode = createAction(
+  '[Editor] Next Node'
+)
+
+export const previousNode = createAction(
+  '[Editor] Previous Node'
+)
 
 
 
