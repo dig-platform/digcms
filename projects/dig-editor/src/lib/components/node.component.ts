@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {DigEditorNode} from '../interfaces/dig-editor-node';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -63,7 +73,10 @@ export class NodeComponent implements OnInit, AfterViewInit{
   public rows = 1;
 
   @ViewChild('input') input!: ElementRef;
-
+  @HostListener(':input')
+  onInput() {
+    this.resize();
+  }
   readonly control = new FormControl();
 
   constructor(readonly store: Store) {
@@ -75,6 +88,23 @@ export class NodeComponent implements OnInit, AfterViewInit{
 
   ngOnInit(): void {
     this.control.setValue(this.node.content);
+  }
+
+  ngAfterViewInit(): void {
+    this.store.select(NodeSelectors.selectCurrentNode).subscribe(node => {
+      if (node && node.id === this.node.id) {
+        setTimeout(() => this.setFocus(), 25);
+      }
+    })
+
+    if (this.input.nativeElement.scrollHeight) {
+      setTimeout(() => this.resize());
+    }
+  }
+
+  resize() {
+    this.input.nativeElement.style.height = '0';
+    this.input.nativeElement.style.height = this.input.nativeElement.scrollHeight + 'px';
   }
 
   setActive() {
@@ -89,14 +119,6 @@ export class NodeComponent implements OnInit, AfterViewInit{
   insertAfter(ev: Event) {
     ev.preventDefault();
     this.store.dispatch(NodeActions.insertAfter({}));
-  }
-
-  ngAfterViewInit(): void {
-    this.store.select(NodeSelectors.selectCurrentNode).subscribe(node => {
-      if (node && node.id === this.node.id) {
-        setTimeout(() => this.setFocus(), 25);
-      }
-    })
   }
 
   deleteIfEmpty($event: any) {
