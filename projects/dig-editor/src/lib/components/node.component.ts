@@ -15,13 +15,37 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import * as NodeActions from '../store/editor/node/node.actions';
 import * as NodeSelectors from '../store/editor/node/node.selectors';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'dig-editor-node',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatMenuModule, MatButtonModule, MatIconModule],
   template: `
     <div class="dig-editor-node">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon fontSet="material-symbols-outlined">more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="setFormat('h1')">
+          <mat-icon fontSet="material-symbols-outlined">format_h1</mat-icon>
+          Headline 1
+        </button>
+        <button mat-menu-item (click)="setFormat('h2')">
+          <mat-icon fontSet="material-symbols-outlined">format_h2</mat-icon>
+          Headline 2
+        </button>
+        <button mat-menu-item (click)="setFormat('h3')">
+          <mat-icon fontSet="material-symbols-outlined">format_h3</mat-icon>
+          Headline 3
+        </button>
+        <button mat-menu-item (click)="setFormat('paragraph')">
+          <mat-icon fontSet="material-symbols-outlined">format_paragraph</mat-icon>
+          Paragraph
+        </button>
+      </mat-menu>
       <textarea
         #input
         rows="rows"
@@ -144,5 +168,12 @@ export class NodeComponent implements OnInit, AfterViewInit{
       ev.preventDefault();
       this.store.dispatch(NodeActions.previousNode());
     }
+  }
+
+  setFormat(format: string) {
+    this.store.dispatch(NodeActions.formatNode({
+      format,
+      id: this.node.id
+    }));
   }
 }
