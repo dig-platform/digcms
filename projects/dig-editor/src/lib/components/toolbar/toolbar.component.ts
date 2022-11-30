@@ -3,22 +3,19 @@ import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {FormatButtonComponent} from '../buttons/format-button.component';
 
 @Component({
   selector: 'dig-editor-toolbar',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, FormatButtonComponent],
   template: `
     <mat-toolbar>
-      <button mat-icon-button>
-        <mat-icon>title</mat-icon>
-      </button>
-      <button mat-icon-button>
-        <mat-icon fontSet="material-symbols-outlined">format_paragraph</mat-icon>
-      </button>
-      <button mat-icon-button>
-        <mat-icon fontSet="material-symbols-outlined">format_quote</mat-icon>
-      </button>
+      <dig-editor-format-button format="h1"></dig-editor-format-button>
+      <dig-editor-format-button format="h2"></dig-editor-format-button>
+      <dig-editor-format-button format="h3"></dig-editor-format-button>
+      <dig-editor-format-button format="paragraph"></dig-editor-format-button>
       <button mat-icon-button>
         <mat-icon fontSet="material-symbols-outlined">format_list_bulleted</mat-icon>
       </button>

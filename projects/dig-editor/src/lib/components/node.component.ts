@@ -14,6 +14,7 @@ import * as NodeSelectors from '../store/editor/node/node.selectors';
     <div class="dig-editor-node">
       <textarea
         #input
+        rows="rows"
         [class]="['dig-editor-input', this.node.format]"
         [formControl]="control"
         (focusin)="setActive()"
@@ -43,10 +44,23 @@ import * as NodeSelectors from '../store/editor/node/node.selectors';
       font-size: 2rem;
       font-weight: 700;
     }
+    .h2{
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .h3{
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .paragraph{
+      font-size: 1rem;
+      font-weight: 400;
+    }
   `]
 })
 export class NodeComponent implements OnInit, AfterViewInit{
   @Input() node!: DigEditorNode;
+  public rows = 1;
 
   @ViewChild('input') input!: ElementRef;
 
@@ -74,12 +88,12 @@ export class NodeComponent implements OnInit, AfterViewInit{
 
   insertAfter(ev: Event) {
     ev.preventDefault();
-    this.store.dispatch(NodeActions.insertAfter());
+    this.store.dispatch(NodeActions.insertAfter({}));
   }
 
   ngAfterViewInit(): void {
-    this.store.select(NodeSelectors.selectCurrentNodeId).subscribe(id => {
-      if (id && id === this.node.id) {
+    this.store.select(NodeSelectors.selectCurrentNode).subscribe(node => {
+      if (node && node.id === this.node.id) {
         setTimeout(() => this.setFocus(), 25);
       }
     })

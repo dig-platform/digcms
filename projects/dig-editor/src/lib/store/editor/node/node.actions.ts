@@ -26,8 +26,19 @@ export const setActiveNode = createAction(
   props<{id: string}>()
 )
 
+export const formatNode = createAction(
+  '[Editor] Format Node',
+  props<{format: string, id: string}>()
+)
+
+export const insertBefore = createAction(
+  '[Editor] Insert Before',
+  props<{id?: string}>()
+)
+
 export const insertAfter = createAction(
-  '[Editor] Insert After'
+  '[Editor] Insert After',
+  props<{id?: string}>()
 )
 
 export const nextNode = createAction(

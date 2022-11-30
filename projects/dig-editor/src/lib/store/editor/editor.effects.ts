@@ -24,7 +24,7 @@ export class EditorEffects {
           {
             id: 'description',
             content: 'Reactive Angular editor',
-            format: 'p',
+            format: 'paragraph',
             position: 1
           },
         ]
