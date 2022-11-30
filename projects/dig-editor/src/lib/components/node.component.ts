@@ -44,6 +44,18 @@ import * as NodeSelectors from '../store/editor/node/node.selectors';
       font-size: 2rem;
       font-weight: 700;
     }
+    .h2{
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .h3{
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .paragraph{
+      font-size: 1rem;
+      font-weight: 400;
+    }
   `]
 })
 export class NodeComponent implements OnInit, AfterViewInit{
@@ -76,12 +88,12 @@ export class NodeComponent implements OnInit, AfterViewInit{
 
   insertAfter(ev: Event) {
     ev.preventDefault();
-    this.store.dispatch(NodeActions.insertAfter());
+    this.store.dispatch(NodeActions.insertAfter({}));
   }
 
   ngAfterViewInit(): void {
-    this.store.select(NodeSelectors.selectCurrentNodeId).subscribe(id => {
-      if (id && id === this.node.id) {
+    this.store.select(NodeSelectors.selectCurrentNode).subscribe(node => {
+      if (node && node.id === this.node.id) {
         setTimeout(() => this.setFocus(), 25);
       }
     })
