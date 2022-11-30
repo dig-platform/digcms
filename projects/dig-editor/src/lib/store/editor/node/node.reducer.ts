@@ -87,7 +87,6 @@ export const getNodeIndex = (id: string | null | undefined, state: State) => {
 }
 
 export const patchNode = (node: DigEditorNode, state: State) => {
-  console.log(node, state.nodes);
   const index = getNodeIndex(node.id, state);
   const nodes = [...state.nodes];
   nodes[index] = {...nodes[index], ...node};
