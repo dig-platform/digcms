@@ -3,16 +3,16 @@ import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {ToolbarButtonHeadlineComponent} from './toolbar-button-headline.component';
 
 @Component({
   selector: 'dig-editor-toolbar',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenuModule, ToolbarButtonHeadlineComponent],
   template: `
     <mat-toolbar>
-      <button mat-icon-button>
-        <mat-icon>title</mat-icon>
-      </button>
+      <dig-editor-toolbar-button-headline></dig-editor-toolbar-button-headline>
       <button mat-icon-button>
         <mat-icon fontSet="material-symbols-outlined">format_paragraph</mat-icon>
       </button>

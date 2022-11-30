@@ -14,6 +14,7 @@ import * as NodeSelectors from '../store/editor/node/node.selectors';
     <div class="dig-editor-node">
       <textarea
         #input
+        rows="rows"
         [class]="['dig-editor-input', this.node.format]"
         [formControl]="control"
         (focusin)="setActive()"
@@ -47,6 +48,7 @@ import * as NodeSelectors from '../store/editor/node/node.selectors';
 })
 export class NodeComponent implements OnInit, AfterViewInit{
   @Input() node!: DigEditorNode;
+  public rows = 1;
 
   @ViewChild('input') input!: ElementRef;
 

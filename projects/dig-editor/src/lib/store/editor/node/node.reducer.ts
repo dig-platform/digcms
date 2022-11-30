@@ -69,13 +69,35 @@ export const reducer = createReducer(
       ...state,
       selectedNodeId: next
     }
+  }),
+  on(NodeActions.formatNode, (state, {format}) => {
+    let newState = {...state};
+    const selectedNode = newState.selectedNodeId;
+    if (selectedNode ) {
+      // update the selected node
+      // fuck you typescript!!!!!!!!!!!
+      // @ts-ignore
+      newState.entities = {
+        ...newState.entities,
+        [selectedNode]: {
+          ...newState.entities[selectedNode],
+          format
+        }
+      }
+    } else {
+      // add a new node
+      const newNode = nodeFactory(format);
+      newState = adapter.addOne(newNode, newState);
+      console.log(newNode, newState);
+    }
+    return newState;
   })
 );
 
-export const nodeFactory = (): DigEditorNode => ({
+export const nodeFactory = (format: string = 'p'): DigEditorNode => ({
   id: uuid() + '',
   content: '',
-  format: 'p'
+  format
 })
 
 export const getSelectedNodeId = (state: State) => state.selectedNodeId;

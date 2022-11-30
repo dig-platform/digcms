@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DigEditorComponent } from './dig-editor.component';
-import {ToolbarComponent} from './components/toolbar.component';
+import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {BodyComponent} from './components/body.component';
 import {NodeComponent} from './components/node.component';
 import {CommonModule} from '@angular/common';
