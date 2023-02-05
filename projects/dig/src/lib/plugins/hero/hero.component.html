@@ -1,0 +1,29 @@
+<div class="hero-plugin-form" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Subtitle</mat-label>
+    <input matInput formControlName="subtitle">
+  </mat-form-field>
+  <div class="cta">
+    <mat-form-field appearance="outline">
+      <mat-label>Call to action</mat-label>
+      <input matInput formControlName="cta">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Link</mat-label>
+      <input matInput formControlName="link">
+    </mat-form-field>
+  </div>
+  <div class="background-image" *ngIf="false">
+    <div class="image-preview" *ngIf="imagePreview">
+      <img [src]="imagePreview">
+    </div>
+    <div class="image-form">
+      <button mat-flat-button color="primary" appUpload (progress)="setUploadProgress($event)" (uploaded)="upload($event)">Upload background image</button>
+    </div>
+  </div>
+  <mat-progress-bar mode="determinate" *ngIf="showProgress" [value]="progress"></mat-progress-bar>
+</div>

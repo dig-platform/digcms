@@ -1,0 +1,29 @@
+mat-form-field{
+  display: block;
+}
+
+.background-image{
+  display: flex;
+  .image-preview{
+    width: 240px;
+    height: 240px;
+    overflow: hidden;
+    margin-right: 16px;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  .actions{
+
+  }
+}
+//
+//.cta{
+//  display: flex;
+//  margin: 0 -4px;
+//  mat-form-field{
+//    flex: 1;
+//    margin: 0 4px;
+//  }
+//}

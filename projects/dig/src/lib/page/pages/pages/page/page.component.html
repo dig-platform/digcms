@@ -1,0 +1,19 @@
+<div class="page" *ngIf="page$ | async as page">
+  <app-ui-header>
+    <app-ui-title>
+      <ng-container>{{page.name}}</ng-container>
+    </app-ui-title>
+  </app-ui-header>
+
+  <mat-tab-group>
+    <mat-tab label="Content">
+      <app-content-node-tab></app-content-node-tab>
+    </mat-tab>
+    <mat-tab label="Code">
+      <app-content-node-code-tab></app-content-node-code-tab>
+    </mat-tab>
+    <mat-tab label="Settings">
+      <app-page-settings-tab></app-page-settings-tab>
+    </mat-tab>
+  </mat-tab-group>
+</div>

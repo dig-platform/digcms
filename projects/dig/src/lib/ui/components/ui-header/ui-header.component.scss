@@ -1,0 +1,21 @@
+@use 'sass:map';
+@use '../../../../../../../node_modules/@angular/material/index' as mat;
+
+$gray: mat.define-palette(mat.$gray-palette);
+$blue: mat.define-palette(mat.$light-blue-palette);
+
+.dig-ui-header{
+  //background: mat.get-color-from-palette($gray, 100);
+  background: #fff;
+  border-bottom: mat.get-color-from-palette($gray, 200) 1px solid;
+  padding: 16px;
+  display: flex;
+}
+
+.dig-ui-header-title{
+  flex: 1;
+}
+
+.dig-ui-header-main{
+
+}

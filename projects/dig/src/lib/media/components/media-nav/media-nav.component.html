@@ -1,0 +1,25 @@
+<div class="media-nav">
+  <button
+    mat-flat-button
+    class="add"
+    color="primary"
+    appUpload
+    (progress)="setProgress($event)"
+    (uploadStart)="startUpload($event)"
+    (uploaded)="afterUpload($event)">
+    Upload new file
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-list class="nav-list">
+    <a
+      mat-list-item
+      *ngFor="let file of media$ | async"
+      routerLinkActive="active"
+      routerLink="/dig-cms/media/{{file.id}}">
+      <mat-icon matListItemIcon>image</mat-icon>
+      {{file | mediaTitle}}</a>
+  </mat-list>
+  <button mat-button routerLink="/dig-cms/media">
+    View All
+  </button>
+</div>

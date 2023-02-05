@@ -1,0 +1,7 @@
+<mat-list class="nav-list">
+  <a
+    mat-list-item
+    *ngFor="let node of contentNodes$ | async"
+    routerLinkActive="active"
+    routerLink="/dig2/pages/{{pageId}}/{{node.id}}">{{node.name}}</a>
+</mat-list>

@@ -1,0 +1,13 @@
+mat-form-field{
+  display: block;
+}
+
+.block-form-row{
+  display: flex;
+  margin-bottom: 8px;
+  mat-card{
+    flex: 1;
+    margin:0 24px;
+  }
+}
+

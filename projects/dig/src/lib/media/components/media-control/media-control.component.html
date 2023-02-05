@@ -1,0 +1,16 @@
+<mat-card class="image mat-elevation-z0">
+  <mat-card-content>
+    <div class="media">
+      <app-media-viewer *ngIf="hasMedia; else placeholder" [file]="media"></app-media-viewer>
+      <ng-template #placeholder>
+        <mat-card class="placeholder">
+          <mat-icon>broken_image</mat-icon>
+          <span>Media coming soon</span>
+        </mat-card>
+      </ng-template>
+    </div>
+    <div class="image-form">
+      <app-media-button (click)="_onTouched()" text="Upload Image" (selectionChanged)="setMedia($event)"></app-media-button>
+    </div>
+  </mat-card-content>
+</mat-card>

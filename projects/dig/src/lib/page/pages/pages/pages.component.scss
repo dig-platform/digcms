@@ -1,0 +1,22 @@
+.featured{
+  mat-grid-list{
+    margin: 8px;
+  }
+  mat-grid-tile{
+    background: #fff;
+    mat-list{
+      margin: 0;
+      mat-list-item{
+        font-weight: normal;
+        margin: 0;
+        font-size: 12px;
+      }
+    }
+  }
+  mat-card{
+    height: 100%;
+    width: 100%;
+    margin: 8px;
+    box-sizing: border-box;
+  }
+}

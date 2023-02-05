@@ -1,0 +1,40 @@
+<div class="app-setup">
+  <div class="header">
+    <h1>Welcome to DigitalusCMS!</h1>
+    <p>Please take a minute to setup your new site.</p>
+  </div>
+  <ng-container *ngIf="loaded; else loading">
+    <mat-card>
+      <div class="steps">
+        <mat-stepper orientation="vertical" linear #stepper>
+          <mat-step [completed]="stepComplete('adminUser')" label="Create admin user">
+            <div *ngIf="stepComplete('adminUser'); else createAdminUser">
+              Your site's admin user is setup properly.
+            </div>
+            <ng-template #createAdminUser>
+              <p>You don't have an admin account setup yet. Would you like to be the site owner?</p>
+              <dig-loading-message *ngIf="creatingOwner; else createOwnerButton">
+                Creating site owner account
+              </dig-loading-message>
+              <ng-template #createOwnerButton>
+                <button
+                  mat-flat-button
+                  color="primary"
+                  (click)="becomeOwner()"
+                  [disabled]="creatingOwner">Become owner</button>
+              </ng-template>
+            </ng-template>
+          </mat-step>
+        </mat-stepper>
+      </div>
+      <mat-toolbar>
+        <button mat-flat-button (click)="cancel()">Cancel</button>
+        <span class="spacer"></span>
+        <button mat-flat-button color="primary" (click)="done()" [disabled]="errors.length > 0">Done</button>
+      </mat-toolbar>
+    </mat-card>
+  </ng-container>
+  <ng-template #loading>
+    Loading CMS
+  </ng-template>
+</div>

@@ -1,0 +1,20 @@
+{
+  "name": "@dig-platform/dig",
+  "version": "15.0.0",
+  "peerDependencies": {
+    "@angular/common": "^15.1.0",
+    "@angular/core": "^15.1.0",
+    "@ngrx/effects": "^15.1.0",
+    "@ngrx/store": "^15.1.0",
+    "@ngrx/store-devtools": "^15.1.0",
+    "@angular/material": "^15.1.1",
+    "rxfire": "^6.0.3",
+    "firebase": "^9.15.0",
+    "camelcase": "^7.0.1",
+    "dashify": "^2.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

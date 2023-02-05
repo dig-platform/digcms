@@ -1,0 +1,7 @@
+<div class="media-upload-progress" *ngIf="upload$ | async as upload">
+  <mat-progress-bar mode="determinate" [value]="upload.progress"></mat-progress-bar>
+  <div class="upload-details">
+    <span class="name">Uploading file: {{upload.name}}</span>
+    <span class="progress">{{(upload.size * upload.progress / 100) | fileSize}} uploaded - {{upload.progress | percent}}</span>
+  </div>
+</div>

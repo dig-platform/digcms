@@ -1,0 +1,14 @@
+.loading-message{
+  display: flex;
+  align-items: center;
+  .content{
+    flex: 1;
+  }
+}
+
+
+mat-spinner{
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+}

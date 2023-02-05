@@ -1,0 +1,8 @@
+<div class="avatar">
+  <img class="avatar" *ngIf="avatar$ | async as url; else icon" [src]="url" referrerpolicy="no-referrer">
+  <ng-template #icon>
+    <mat-icon>account_circle</mat-icon>
+  </ng-template>
+</div>
+
+

@@ -1,0 +1,32 @@
+.post-row{
+  margin: 0 8px 8px 8px;
+  overflow: hidden;
+}
+
+.content-wrapper{
+  display: flex;
+}
+
+.avatar{
+  width: 120px;
+  height: 120px;
+}
+
+.details{
+  flex: 1;
+  margin: 16px;
+
+  h3{
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0 0 8px 0
+  }
+  p{
+    margin: 0;
+  }
+}
+
+.actions{
+  margin: 8px;
+  display: flex;
+}

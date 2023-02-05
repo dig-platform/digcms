@@ -1,0 +1,70 @@
+<div class="media-file" *ngIf="file$ | async as file">
+  <app-ui-header>
+    <app-ui-title>
+      <ng-container>{{file.name}}</ng-container>
+    </app-ui-title>
+  </app-ui-header>
+
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened position="end">
+      <mat-list>
+        <mat-list-item>
+          <strong>Name:</strong>
+          {{file.name}}
+        </mat-list-item>
+        <mat-list-item>
+          <strong>Type:</strong>
+          {{file.contentType}}
+        </mat-list-item>
+        <mat-list-item>
+          <strong>Size:</strong>
+          {{file.size | fileSize}}
+        </mat-list-item>
+        <mat-list-item>
+          <strong>Created At:</strong>
+          {{file.timeCreated | date}}
+        </mat-list-item>
+        <mat-list-item>
+          <strong>Cloud Bucket:</strong>
+          {{file.bucket}}
+        </mat-list-item>
+      </mat-list>
+      <form>
+        <mat-form-field class="example-chip-list">
+          <mat-label>Media Tags</mat-label>
+          <mat-chip-grid #chipGrid aria-label="Tag selection">
+            <mat-chip-row *ngFor="let tag of tags" (removed)="remove(tag)">
+              {{tag}}
+              <button matChipRemove [attr.aria-label]="'remove ' + tag">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          </mat-chip-grid>
+          <input placeholder="New Tag..." #tagInput [formControl]="tagCtrl"
+                 [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 (matChipInputTokenEnd)="add($event)"/>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+              {{tag}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+      <div class="actions">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="save()"
+          [disabled]="! dirty">Save Media</button>
+        <span class="spacer"></span>
+        <app-delete-button (confirmed)="deleteFile()"></app-delete-button>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+      <mat-card class="preview">
+        <app-media-viewer *ngIf="file?.name" [file]="file"></app-media-viewer>
+      </mat-card>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

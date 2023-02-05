@@ -1,0 +1,17 @@
+:host{
+  flex: 1;
+}
+.media{
+  margin: 1rem;
+  img{
+    width: 100%;
+    height: auto;
+  }
+  .details{
+    font-size: 12px;
+  }
+}
+
+.media{
+  height: 100%;
+}

@@ -1,0 +1,18 @@
+mat-progress-bar{
+  display: block;
+  margin-bottom: 8px;
+}
+
+.upload-details{
+  display: flex;
+  span{
+    flex: 1;
+    font-size: 12px;
+    .name{
+
+    }
+    .progress{
+      text-align: right;
+    }
+  }
+}

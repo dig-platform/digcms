@@ -1,0 +1,97 @@
+<ng-container  *ngIf="panels$ | async as panels">
+  <mat-sidenav-container class="dig-ui">
+    <mat-sidenav mode="side"  (openedChange)="setMenuState($event)" [opened]="panels.menu?.open" #sidenav>
+      <h2 class="title">
+        Digitalus CMS
+      </h2>
+      <h3 class="section-header">Project shortcuts</h3>
+      <p class="note">You don't have any shortcuts yet.</p>
+      <h3 class="section-header">Manage resources</h3>
+      <mat-accordion multi>
+        <mat-expansion-panel persistentPanel="menu-content">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Content Blocks
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="full-width">
+            <app-block-nav></app-block-nav>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel  persistentPanel="menu-page">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Pages
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="full-width">
+            <app-page-nav></app-page-nav>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel  persistentPanel="menu-blog">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Blog
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="full-width">
+            <app-blog-nav></app-blog-nav>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel persistentPanel="menu-forms" *ngIf="false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Forms
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="full-width">
+            ...
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel persistentPanel="menu-media">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Media
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="full-width">
+            <app-media-nav></app-media-nav>
+          </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel persistentPanel="menu-users" *ifRole="'admin'">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Users
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="full-width">
+            <app-user-nav></app-user-nav>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <button mat-button class="advanced" *ifRole="'admin'">Show advanced options</button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Creativos Studio</span>
+        <span class="spacer"></span>
+        <button mat-button routerLink="/dig-cms/docs">Go to docs</button>
+        <button mat-icon-button>
+          <mat-icon [matBadge]="5"  matBadgeColor="warn">notifications</mat-icon>
+        </button>
+        <app-avatar [matMenuTriggerFor]="menu"></app-avatar>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item disabled>Profile</button>
+          <button mat-menu-item disabled>Preferences</button>
+          <button mat-menu-item signOut redirect="/dig-cms">Sign Out</button>
+        </mat-menu>
+      </mat-toolbar>
+      <main>
+        <ng-content></ng-content>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</ng-container>
