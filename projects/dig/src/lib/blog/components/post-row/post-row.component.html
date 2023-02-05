@@ -1,0 +1,22 @@
+<mat-card class="post-row" *ngIf="post">
+  <div class="content-wrapper">
+    <div class="avatar">
+      <app-media-viewer *ngIf="post.media" [file]="post.media"></app-media-viewer>
+    </div>
+    <div class="details">
+      <h3>{{post.title}} <small>
+        <ng-container *ngIf="post.tags && post.tags.length > 0">
+          <span *ngFor="let tag of post.tags" class="tag">#{{tag}}</span>
+        </ng-container>
+      </small></h3>
+      <p>
+        <span>Created at: ---</span>
+      </p>
+    </div>
+    <div class="actions">
+      <button mat-icon-button routerLink="/dig-cms/blog/{{post.id}}">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

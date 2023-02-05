@@ -1,0 +1,11 @@
+{
+  "name": "@dig-platform/dig-functions",
+  "version": "15.0.0",
+  "description": "Firebase functions for DigCMS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

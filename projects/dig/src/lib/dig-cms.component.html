@@ -1,0 +1,27 @@
+<div class="dig-cms">
+  <div class="welcome" *ifAuth="false">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>DigCMS</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Please sign in to manage your site</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button routerLink="/">Back to site</button>
+        <span class="spacer"></span>
+        <button mat-flat-button signIn color="primary">Sign In</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <ng-container *ifAuth="true">
+    <ng-container *ngIf="appCheck; else appSetup">
+      <app-ui>
+        <router-outlet></router-outlet>
+      </app-ui>
+    </ng-container>
+    <ng-template #appSetup>
+      <dig-app-setup (valid)="appCheck = $event"></dig-app-setup>
+    </ng-template>
+  </ng-container>
+</div>

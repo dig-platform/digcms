@@ -1,0 +1,22 @@
+.app-setup{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  padding: 24px;
+  text-align: center;
+  p{
+    font-size: 21px;
+  }
+}
+
+mat-card{
+  width: 720px;
+  margin: 50px auto;
+}
+.steps{
+  flex: 1;
+  padding: 24px;
+}

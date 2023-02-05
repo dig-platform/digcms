@@ -1,0 +1,29 @@
+<div class="media-grid"
+     appDropzone
+     (uploadStart)="startUpload($event)"
+     (progress)="setProgress($event)" >
+  <app-media-upload-progress></app-media-upload-progress>
+
+  <div class="filter" [formGroup]="filters">
+    <mat-form-field>
+      <mat-label>Search media</mat-label>
+      <mat-icon matSuffix>search</mat-icon>
+      <input matInput formControlName="query">
+    </mat-form-field>
+    <mat-chip-listbox multiple formControlName="tags">
+      <mat-chip-option *ngFor="let tag of tags$ | async" [value]="tag">{{tag}}</mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+  <mat-grid-list cols="4" rowHeight="1:1" gutterSize="8" *ngIf="visibleMedia$ | async as files">
+    <mat-grid-tile  *ngFor="let file of files" (click)="tileClick(file)">
+      <div class="media-wrapper">
+        <app-media-viewer [file]="file"></app-media-viewer>
+      </div>
+      <mat-grid-tile-footer>
+        <div class="details">
+          <span>{{file.name}}</span>
+        </div>
+      </mat-grid-tile-footer>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

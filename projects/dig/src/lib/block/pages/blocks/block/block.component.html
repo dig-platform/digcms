@@ -1,0 +1,17 @@
+<div class="block" *ngIf="block$ | async as block">
+  <app-ui-header>
+    <app-ui-title>
+      <ng-container>{{block.name}}</ng-container>
+    </app-ui-title>
+  </app-ui-header>
+
+  <mat-tab-group>
+    <mat-tab label="Content">
+      <app-block-tab></app-block-tab>
+    </mat-tab>
+    <mat-tab label="Code">
+      <app-block-code-tab></app-block-code-tab>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

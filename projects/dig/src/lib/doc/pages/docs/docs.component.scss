@@ -1,0 +1,22 @@
+:host{
+  flex: 1;
+}
+
+.docs, mat-drawer-container, mat-drawer{
+  height: 100%;
+}
+
+mat-drawer-content{
+  padding: 16px;
+}
+
+mat-drawer{
+  width: 240px;
+}
+
+.indent-1{
+  padding-left: 32px;
+}
+.indent-2{
+  padding-left: 48px;
+}

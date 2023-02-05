@@ -1,0 +1,18 @@
+<mat-card class="user-row" *ngIf="user">
+  <div class="content-wrapper">
+    <div class="avatar">
+      <img [src]="user.photoURL" alt="avatar" referrerpolicy="no-referrer">
+    </div>
+    <div class="details">
+      <h3>{{user.displayName}} <small>{{user.email}}</small></h3>
+      <p>
+        <span>Created at: {{user.createdAt.seconds * 1000 | date}}</span>
+      </p>
+    </div>
+    <div class="actions">
+      <button mat-icon-button routerLink="/dig-cms/users/{{user.uid}}">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

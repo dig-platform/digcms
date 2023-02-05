@@ -1,0 +1,15 @@
+:host{
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.media-image{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  img{
+    width: 120%;
+    height: auto;
+  }
+}

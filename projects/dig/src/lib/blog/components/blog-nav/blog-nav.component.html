@@ -1,0 +1,15 @@
+<div class="media-nav">
+  <app-create-post-button></app-create-post-button>
+  <mat-list class="nav-list">
+    <a
+      mat-list-item
+      *ngFor="let post of posts$ | async"
+      routerLinkActive="active"
+      routerLink="/dig-cms/blog/{{post.id}}">
+      <mat-icon matListItemIcon>list_alt</mat-icon>
+      {{post.title}}</a>
+  </mat-list>
+  <button mat-button routerLink="/dig-cms/blog">
+    View All
+  </button>
+</div>

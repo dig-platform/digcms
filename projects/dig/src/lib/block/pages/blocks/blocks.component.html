@@ -1,0 +1,28 @@
+<div class="blocks">
+  <app-ui-header>
+    <app-ui-title>Content Blocks</app-ui-title>
+  </app-ui-header>
+  <div class="featured">
+    <mat-grid-list cols="4" rowHeight="1:1" gutterSize="8">
+      <mat-grid-tile  *ngFor="let block of blocks$ | async" routerLink="/dig-cms/blocks/{{block.id}}">
+        <mat-grid-tile-header>{{block.name}}</mat-grid-tile-header>
+        <mat-list class="detail-list">
+          <mat-list-item>
+            <strong>Created at:</strong> ---
+          </mat-list-item>
+          <mat-list-item>
+            <strong>Last updated:</strong> ---
+          </mat-list-item>
+        </mat-list>
+        <mat-grid-tile-footer>
+          <button mat-button>Manage block</button>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <mat-list>
+    <a mat-list-item *ngFor="let block of blocks$ | async" routerLink="/dig-cms/blocks/{{block.id}}">
+      <h3>{{block.name}}</h3>
+    </a>
+  </mat-list>
+</div>

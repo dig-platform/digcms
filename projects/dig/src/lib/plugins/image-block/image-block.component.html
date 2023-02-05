@@ -1,0 +1,34 @@
+<div class="hero-plugin-form" [formGroup]="form">
+  <mat-card class="image mat-elevation-z0">
+    <mat-card-content>
+      <div class="media">
+        <app-media-viewer *ngIf="media" [file]="media"></app-media-viewer>
+      </div>
+      <div class="image-form">
+        <app-media-button text="Upload Image" (selectionChanged)="setMedia($event)"></app-media-button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Subtitle</mat-label>
+    <input matInput formControlName="subtitle">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Content</mat-label>
+    <textarea matInput formControlName="content"></textarea>
+  </mat-form-field>
+  <div class="cta">
+    <mat-form-field appearance="outline">
+      <mat-label>Call to action</mat-label>
+      <input matInput formControlName="cta">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Link</mat-label>
+      <input matInput formControlName="link">
+    </mat-form-field>
+  </div>
+</div>

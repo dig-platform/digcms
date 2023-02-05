@@ -1,0 +1,14 @@
+<div class="block-nav">
+  <mat-list class="nav-list">
+    <a
+      mat-list-item
+      *ngFor="let user of users$ | async"
+      routerLinkActive="active"
+      routerLink="/dig-cms/users/{{user.uid}}">
+      <mat-icon matListItemIcon>grid_view</mat-icon>
+      {{user.displayName}}</a>
+  </mat-list>
+  <button mat-button routerLink="/dig-cms/users">
+    View All
+  </button>
+</div>

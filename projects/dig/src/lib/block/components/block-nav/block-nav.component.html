@@ -1,0 +1,18 @@
+<div class="block-nav">
+  <button mat-flat-button class="add" color="primary" (click)="create()">
+    Add new block
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-list class="nav-list">
+    <a
+      mat-list-item
+      *ngFor="let block of blocks$ | async"
+      routerLinkActive="active"
+      routerLink="/dig-cms/blocks/{{block.id}}">
+      <mat-icon matListItemIcon>grid_view</mat-icon>
+      {{block.name}}</a>
+  </mat-list>
+  <button mat-button routerLink="/dig-cms/blocks">
+    View All
+  </button>
+</div>

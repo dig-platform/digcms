@@ -1,0 +1,28 @@
+
+
+<mat-card>
+  <div class="form-wrapper">
+    <app-content-node-list selectFirst="true"></app-content-node-list>
+    <div class="form">
+      <section>
+        <h3 class="mat-headline-6">Component <small>xyz.component.ts</small></h3>
+        <app-code-view lang="typescript" [code]="ts$ | async"></app-code-view>
+      </section>
+
+      <section>
+        <h3 class="mat-headline-6">Template <small>xyz.component.html</small></h3>
+        <app-code-view lang="html" [code]="html$ | async"></app-code-view>
+      </section>
+
+      <section>
+        <h3 class="mat-headline-6">Styles <small>xyz.component.scss</small></h3>
+        <app-code-view lang="css" [code]="scss$ | async"></app-code-view>
+      </section>
+
+      <section>
+        <h3 class="mat-headline-6">Data <small>.json</small></h3>
+        <app-json-view [data]="content$ | async"></app-json-view>
+      </section>
+    </div>
+  </div>
+</mat-card>

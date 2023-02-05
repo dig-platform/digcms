@@ -4,15 +4,12 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
     "paths": {
-      "dig-editor": [
-        "dist/dig-editor"
-      ],
-      "editor": [
-        "dist/editor"
+      "dig": [
+        "dist/dig"
       ]
     },
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

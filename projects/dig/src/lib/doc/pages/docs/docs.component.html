@@ -1,0 +1,29 @@
+<div class="docs">
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened position="end">
+      <mat-toolbar>
+        <span>Docs</span>
+      </mat-toolbar>
+      <mat-list class="nav-list">
+        <a
+          *ngFor="let page of pages"
+          mat-list-item
+          [routerLink]="page.link"
+          routerLinkActive="active"
+          class="nav-list-item indent-{{page.indent}}"
+          [routerLinkActiveOptions]="{ exact: true }">{{page.label}}</a>
+      </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <h1>DigCMS Docs</h1>
+      <mat-card>
+        <mat-card-content>
+          <markdown *ngIf="path$ | async as path; else notFound" [src]="path"></markdown>
+          <ng-template #notFound>
+            <p>Page not found</p>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

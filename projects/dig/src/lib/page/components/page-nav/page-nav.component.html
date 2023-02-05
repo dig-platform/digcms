@@ -1,0 +1,16 @@
+<button mat-flat-button class="add" color="primary" (click)="createPage()">
+  Add new page
+  <mat-icon>add</mat-icon>
+</button>
+<mat-list class="nav-list">
+  <a
+    mat-list-item
+    *ngFor="let page of pages$ | async"
+    routerLinkActive="active"
+    routerLink="/dig-cms/pages/{{page.id}}">
+    <mat-icon matListItemIcon>article</mat-icon>
+    {{page.name}}</a>
+</mat-list>
+<button mat-button routerLink="/dig-cms/pages">
+  View All
+</button>

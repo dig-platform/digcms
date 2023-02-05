@@ -1,0 +1,19 @@
+<div class="delete-button">
+  <button mat-flat-button color="warn" *ngIf="clicked; else deleteButton" (click)="confirm()">
+    <mat-icon>delete</mat-icon>
+    Confirm
+  </button>
+  <ng-template #deleteButton>
+    <button mat-flat-button *ngIf="text; else iconButton">
+      <button mat-flat-button (click)="delete()">
+        <mat-icon>delete</mat-icon>
+        {{text}}
+      </button>
+    </button>
+    <ng-template #iconButton>
+      <button mat-icon-button (click)="delete()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </ng-template>
+  </ng-template>
+</div>

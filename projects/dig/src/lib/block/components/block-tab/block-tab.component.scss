@@ -1,0 +1,14 @@
+mat-card{
+  margin: 16px;
+}
+
+.form-wrapper{
+  display: flex;
+  app-content-node-list{
+    width: 240px;
+  }
+  .form{
+    flex: 1;
+    padding: 16px;
+  }
+}

@@ -1,0 +1,31 @@
+h3{
+  small{
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.5;
+  }
+}
+
+section{
+  margin-bottom: 32px;
+}
+
+mat-card{
+  margin: 16px;
+}
+
+.form-wrapper{
+  display: flex;
+  app-content-node-list{
+    width: 240px;
+  }
+  .form{
+    flex: 1;
+    padding: 16px;
+    overflow: auto;
+  }
+}
+
+app-code-view{
+  display: block;
+}

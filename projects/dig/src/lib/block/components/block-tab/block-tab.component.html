@@ -1,0 +1,23 @@
+<mat-card>
+  <div class="form-wrapper">
+    <div class="form">
+      <ng-container *ngIf="contentNode$ | async as block">
+        <app-plugin-form
+          [contentNode]="block"
+          (valueChanges)="updateBlock($event)"></app-plugin-form>
+
+        <mat-toolbar>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="saveActiveBlock()"
+            [disabled]="! dirty">
+            Save Content
+          </button>
+          <span class="spacer"></span>
+          <app-delete-button (confirmed)="removeBlock()"></app-delete-button>
+        </mat-toolbar>
+      </ng-container>
+    </div>
+  </div>
+</mat-card>

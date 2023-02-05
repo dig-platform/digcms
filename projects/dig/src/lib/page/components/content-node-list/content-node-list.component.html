@@ -1,0 +1,15 @@
+<div class="content-node-list">
+  <div class="actions">
+    <button mat-flat-button color="primary" (click)="createNode()">
+      Add Node
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <mat-list cdkDropList (cdkDropListDropped)="drop($event)">
+    <mat-list-item
+      *ngFor="let node of contentNodes$ | async"
+      [class.active]="node.id === (this.activeNode$ | async)?.id"
+      cdkDrag
+      (click)="selectNode(node)">{{node.name}}</mat-list-item>
+  </mat-list>
+</div>

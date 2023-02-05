@@ -1,0 +1,16 @@
+<div class="user" *ngIf="user$ | async as user">
+  <app-ui-header>
+    <app-ui-title>{{user.displayName}}</app-ui-title>
+  </app-ui-header>
+  <div class="content-wrapper">
+    <div class="avatar">
+      <img [src]="user.photoURL" alt="avatar" referrerpolicy="no-referrer">
+    </div>
+    <div class="details">
+      <h3> <small>{{user.email}}</small></h3>
+      <p>
+        <span *ngIf="user.createdAt">Created at: {{user.createdAt.seconds * 1000 | date}}</span>
+      </p>
+    </div>
+  </div>
+</div>

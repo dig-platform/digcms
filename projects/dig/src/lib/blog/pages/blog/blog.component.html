@@ -1,0 +1,6 @@
+<app-ui-header>
+  <app-ui-title>Blog Posts</app-ui-title>
+</app-ui-header>
+<div class="posts">
+  <app-post-row *ngFor="let post of posts$ | async" [post]="post"></app-post-row>
+</div>

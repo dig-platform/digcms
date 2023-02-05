@@ -1,0 +1,28 @@
+<div class="pages">
+  <app-ui-header>
+    <app-ui-title>Pages</app-ui-title>
+  </app-ui-header>
+  <div class="featured">
+    <mat-grid-list cols="4" rowHeight="1:1" gutterSize="8">
+      <mat-grid-tile  *ngFor="let page of pages$ | async" routerLink="/dig-cms/pages/{{page.id}}">
+        <mat-grid-tile-header>{{page.name}}</mat-grid-tile-header>
+        <mat-list class="detail-list">
+          <mat-list-item>
+            <strong>Created at:</strong> ---
+          </mat-list-item>
+          <mat-list-item>
+            <strong>Last updated:</strong> ---
+          </mat-list-item>
+        </mat-list>
+        <mat-grid-tile-footer>
+          <button mat-button>Manage page</button>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <mat-list>
+    <a mat-list-item *ngFor="let page of pages$ | async" routerLink="/dig-cms/pages/{{page.id}}">
+      <h3>{{page.name}} <small>{{page.path}}</small></h3>
+    </a>
+  </mat-list>
+</div>

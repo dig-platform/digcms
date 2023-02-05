@@ -1,0 +1,27 @@
+@use 'sass:map';
+@use '../../../../../../../node_modules/@angular/material/index' as mat;
+
+$gray: mat.define-palette(mat.$gray-palette);
+$blue: mat.define-palette(mat.$light-blue-palette);
+
+.content-node-list{
+  background: mat.get-color-from-palette($gray, 100);
+}
+.actions{
+  padding: 8px;
+
+  button{
+    width: 100%;
+    display: block;
+  }
+}
+mat-list-item{
+  background: mat.get-color-from-palette($gray, 100);
+  border-bottom: mat.get-color-from-palette($gray, 200) 1px solid;
+  &:first-of-type{
+    border-top: mat.get-color-from-palette($gray, 200) 1px solid;
+  }
+  &.active{
+    background: #fff;
+  }
+}
