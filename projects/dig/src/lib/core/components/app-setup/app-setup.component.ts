@@ -23,6 +23,9 @@ export class AppSetupComponent implements OnInit{
 
   set errors(errors: string[]) {
     this._errors = errors;
+    if (! errors || errors.length === 0) {
+      localStorage.setItem('dig-app-check', 'done');
+    }
     this.valid.emit(errors.length === 0);
   }
 
@@ -42,10 +45,16 @@ export class AppSetupComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.digCms.appCheck().then(res => {
-      this.loaded = true;
-      this.errors = res ? [...res] : [];
-    })
+    const checked = localStorage.getItem('dig-app-check');
+    if (checked) {
+      this.valid.emit(true);
+      this.done();
+    } else {
+      this.digCms.appCheck().then(res => {
+        this.loaded = true;
+        this.errors = res ? [...res] : [];
+      })
+    }
   }
 
   stepComplete(step: string) {

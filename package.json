@@ -6,7 +6,14 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:lib": "ng build dig",
+    "build:schematics": "tsc -p projects/dig/tsconfig.schematics.json",
+    "postbuild:schematics": "copyfiles projects/dig/schematics/collection.json dist/dig/schematics/ -f",
+    "build:all": "npm run build:lib && npm run build:schematics",
+    "pack:lib": "cd dist/dig && npm pack",
+    "lib:all": "npm run build:all && npm run pack:lib",
+    "publish": "npm run lib:all && cd dist/dig && npm publish"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +33,7 @@
     "camelcase": "^7.0.1",
     "dashify": "^2.0.0",
     "firebase": "^9.17.1",
+    "ngx-markdown": "^15.1.1",
     "rxfire": "^6.0.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -35,7 +43,11 @@
     "@angular-devkit/build-angular": "^15.1.4",
     "@angular/cli": "~15.1.4",
     "@angular/compiler-cli": "^15.1.0",
+    "@dig-platform/dig": "^15.0.0",
+    "@types/dashify": "^1.0.1",
     "@types/jasmine": "~4.3.0",
+    "@types/uuid": "^9.0.0",
+    "copyfiles": "^2.4.1",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -43,8 +55,6 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "ng-packagr": "^15.1.0",
-    "typescript": "~4.9.4",
-    "@types/dashify": "^1.0.1",
-    "@types/uuid": "^9.0.0"
+    "typescript": "~4.9.4"
   }
 }

@@ -52,7 +52,7 @@ export class BlogService {
       intro: '',
       body: '',
       tags: [],
-      media: undefined,
+      media: null,
       ...data,
       status: POST_DRAFT,
       metadata: {

@@ -1,0 +1,13 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add DigCMS to the project.",
+      "factory": "./ng-add/index#ngAdd"
+    },
+    "install-dig": {
+      "description": "Install DigCMS in project.",
+      "factory": "./install-dig/index#installDig"
+    }
+  }
+}

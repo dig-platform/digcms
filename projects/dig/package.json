@@ -1,17 +1,27 @@
 {
   "name": "@dig-platform/dig",
-  "version": "15.0.0",
+  "version": "15.0.5",
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/dig/"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "dependencies"
+  },
   "peerDependencies": {
     "@angular/common": "^15.1.0",
     "@angular/core": "^15.1.0",
+    "@angular/material": "^15.1.1",
     "@ngrx/effects": "^15.1.0",
     "@ngrx/store": "^15.1.0",
     "@ngrx/store-devtools": "^15.1.0",
-    "@angular/material": "^15.1.1",
-    "rxfire": "^6.0.3",
-    "firebase": "^9.15.0",
+    "copyfiles": "^2.4.1",
     "camelcase": "^7.0.1",
-    "dashify": "^2.0.0"
+    "dashify": "^2.0.0",
+    "firebase": "^9.15.0",
+    "ngx-markdown": "^15.1.1",
+    "rxfire": "^6.0.3"
   },
   "dependencies": {
     "tslib": "^2.3.0"

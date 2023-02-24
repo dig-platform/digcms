@@ -6,7 +6,7 @@ export interface Post extends NewPost{
   intro: string;
   body: string;
   tags: string[];
-  media: Media | undefined;
+  media: Media | null;
   displayDate?: string;
 }
 export interface NewPost {

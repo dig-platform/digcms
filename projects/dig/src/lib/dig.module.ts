@@ -45,8 +45,6 @@ export class DigModuleMin { }
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
 
     StoreModule.forFeature(fromDigReducer.digFeatureKey, fromDigReducer.reducer),

@@ -1,8 +1,20 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isOwner() {
+      return auth.token.role === 'owner';
+    }
+    function isAdmin() {
+      // an owner can assume the admin role
+      return isOwner() || auth.token.role === 'admin';
+    }
+    function isEditor() {
+      // an owner or admin can assume the editor role
+      return isOwner() || isAdmin() || auth.token.role === 'editor';
+    }
     match /{document=**} {
-      allow read, write: if false;
+      allow read: if true;
+      allow write: if request.auth != null;
     }
   }
 }

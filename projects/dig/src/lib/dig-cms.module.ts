@@ -9,6 +9,9 @@ import {DigRoutingModule} from './dig-routing.module';
 import {SignInDirective} from './user/directives/sign-in.directive';
 import {MatButtonModule} from '@angular/material/button';
 import {AppSetupComponent} from './core/components/app-setup/app-setup.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {MarkdownModule} from 'ngx-markdown';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -23,7 +26,12 @@ import {AppSetupComponent} from './core/components/app-setup/app-setup.component
     UiComponent,
     SignInDirective,
     MatButtonModule,
-    AppSetupComponent
+    AppSetupComponent,
+    HttpClientModule,
+    MarkdownModule.forRoot({ loader: HttpClient }),
+  ],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
   ]
 })
 export class DigCmsModule { }

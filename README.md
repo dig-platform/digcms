@@ -1,27 +1,139 @@
 # Digcms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+## Requirements
 
-## Development server
+You will need to install the latest versions of Angular CLI and Firebase Tools:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```shell
+npm install -g @angular/cli
+npm install -g firebase-tools
+```
+## Installation
 
-## Code scaffolding
+### 1. Create a new Firebase project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Go to https://console.firebase.google.com/
+2. Create a new project
+3. Enable Firestore Database
+4. Enable Cloud Storage
+5. Enable Authentication with the Google Auth Provider
+6. Create a new web app
+7. Copy the Firebase configuration settings
 
-## Build
+> note that you must upgrade Firebase to the `Blaze` pay as you go plan
+> to enable the required functions
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 2. Create a new Angular app
 
-## Running unit tests
+```shell
+ng new my-site
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 3. Install Digitalus CMS
 
-## Running end-to-end tests
+```shell
+cd ./my-site
+npm install @dig-platform/dig @dig-platform/dig-functions
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 4. Install Angular Material UI
 
-## Further help
+```shell
+ng add @angular/material
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* select whatever theme you want
+* we usually include typography, but it's not required
+* include the Angular Animations module
+
+### 5. Install Firebase
+
+Digitalus CMS runs on Google Cloud & Google's platform as a service, Firebase.
+
+[Setup Firebase Project](./platform.md)
+
+### 6. Install NGRX
+
+First install the packages
+
+```shell
+ng add @ngrx/store @ngrx/effects @ngrx/store-devtools
+```
+
+Then add the root store to your module
+
+```typescript
+// src/app/app.module.ts
+
+// ...
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    StoreModule.forRoot({}, {}),
+    EffectsModule.forRoot([]),
+// ...
+```
+
+> Note that for some reason the @ngrx/store module is automatically imported into to the app module,
+> but the effects are not
+
+### 7.Configure DigitalusCMS
+
+Go to your Firebase console in the browser, then copy the configuration for your web app.
+Then add the DigModule to your app module with the configuration
+
+```typescript
+// src/app/app.module.ts
+
+// ...
+@NgModule({
+    // ...
+    imports: [
+        // ...
+        DigModule.forRoot({
+          title: 'My New Site',
+          firebase: {
+              apiKey: "...",
+              authDomain: "...",
+              projectId: "...",
+              storageBucket: "...",
+              messagingSenderId: "...",
+              appId: "...",
+              measurementId: "..."
+          }
+        })
+        // ...
+    ]
+})
+```
+
+
+
+
+
+Then add the route to your app
+
+```typescript
+// src/app/app-routing.module.ts
+
+const routes: Routes = [
+  {
+    path: 'dig-cms',
+    loadChildren: () => import('@dig-platform/dig').then(d => d.DigCmsModule)
+  },
+  // more routes
+];
+```
+
+And finally replace the boilerplate app page with the router outlet:
+
+```html
+<!-- src/app/app.component.html -->
+<router-outlet></router-outlet>
+```
+
