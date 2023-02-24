@@ -8,6 +8,8 @@
 
 # Node
 /node_modules
+/projects/dig/node_modules
+/projects/dig-functions/node_modules
 npm-debug.log
 yarn-error.log
 
