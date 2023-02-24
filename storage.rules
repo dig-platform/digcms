@@ -1,8 +1,20 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
+    function isOwner() {
+      return request.auth.token.role == 'owner';
+    }
+    function isAdmin() {
+      // an owner can assume the admin role
+      return isOwner() || request.auth.token.role == 'admin';
+    }
+    function isEditor() {
+      // an owner or admin can assume the editor role
+      return isOwner() || isAdmin() || request.auth.token.role == 'editor';
+    }
     match /{allPaths=**} {
-      allow read, write: if false;
+        allow read: if true;
+        allow write: if isEditor();
     }
   }
 }

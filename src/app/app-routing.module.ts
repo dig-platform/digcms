@@ -6,7 +6,15 @@ const routes: Routes = [
     path: 'dig-cms',
     loadChildren: () => import('dig').then(d => d.DigCmsModule)
   },
-  { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) }
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  }
 ];
 
 @NgModule({

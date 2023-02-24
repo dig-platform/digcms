@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import { AboutModule } from './pages/about/about.module';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
         measurementId: "G-R3W54H68G2"
       }
     }),
+    AboutModule,
+    HomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
