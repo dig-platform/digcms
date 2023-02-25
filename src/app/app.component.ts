@@ -8,15 +8,4 @@ import {DigCmsService} from 'dig';
 })
 export class AppComponent {
   title = 'digcms';
-
-  constructor(private dig: DigCmsService) {
-    dig.addShortcut({
-      title: 'Tours',
-      path: '/tours',
-      // optional description, displays a tooltip
-      description: 'Manage tours and trips',
-      // optional icon, see https://fonts.google.com/icons
-      icon: 'tour',
-    })
-  }
 }

@@ -5,6 +5,7 @@ import {Shortcut} from '../../interfaces/shortcut';
 export const editorFeatureKey = 'editor';
 
 export interface State {
+  title: string;
   page: any;
   status: string;
   panels: any[];
@@ -12,6 +13,7 @@ export interface State {
 }
 
 export const initialState: State = {
+  title: 'Digitalus CMS',
   page: undefined,
   panels: [],
   status: '',
@@ -20,8 +22,29 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-
-  on(EditorActions.loadEditors, state => state),
+  on(EditorActions.mergeEditorState, (state, {patch}) => {
+    const title = patch.title ? patch.title : state.title;
+    let shortcuts: Shortcut[] = [];
+    if (patch.shortcuts) {
+      const newShortcuts = [...patch.shortcuts];
+      const existingShortcuts = [...state.shortcuts];
+      const shortcutMap = [
+        ...state.shortcuts,
+        ...patch.shortcuts,
+      ].reduce((map, shortcut) => {
+        return {
+          ...map,
+          [shortcut.path]: {...shortcut}
+        }
+      }, {} as {[path: string]: Shortcut})
+      shortcuts = Object.values(shortcutMap);
+    }
+    return {
+      ...state,
+      title,
+      shortcuts
+    };
+  }),
   on(EditorActions.addShortcut, (state, {shortcut}) => ({
     ...state,
     shortcuts: [
