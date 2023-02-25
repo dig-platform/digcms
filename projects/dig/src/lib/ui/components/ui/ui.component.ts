@@ -22,32 +22,34 @@ import {IfRoleDirective} from '../../../user/directives/if-role.directive';
 import {UserNavComponent} from '../../../user/components/user-nav/user-nav.component';
 import {BlogNavComponent} from '../../../blog/components/blog-nav/blog-nav.component';
 import {selectPanelState} from '../../../core/state/dig/dig.selectors';
+import {ShortcutNavComponent} from '../../../shortcuts/components/shortcut-nav/shortcut-nav.component';
 
 @Component({
   selector: 'app-ui',
   standalone: true,
-    imports: [
-        CommonModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        PageNavComponent,
-        AvatarComponent,
-        MatButtonModule,
-        MatMenuModule,
-        SignOutDirective,
-        MatIconModule,
-        MatBadgeModule,
-        RouterModule,
-        MatExpansionModule,
-        MatDividerModule,
-        PersistentPanelDirective,
-        MatDialogModule,
-        BlockNavComponent,
-        MediaNavComponent,
-        IfRoleDirective,
-        UserNavComponent,
-        BlogNavComponent
-    ],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    PageNavComponent,
+    AvatarComponent,
+    MatButtonModule,
+    MatMenuModule,
+    SignOutDirective,
+    MatIconModule,
+    MatBadgeModule,
+    RouterModule,
+    MatExpansionModule,
+    MatDividerModule,
+    PersistentPanelDirective,
+    MatDialogModule,
+    BlockNavComponent,
+    MediaNavComponent,
+    IfRoleDirective,
+    UserNavComponent,
+    BlogNavComponent,
+    ShortcutNavComponent
+  ],
   templateUrl: './ui.component.html',
   styleUrls: ['./ui.component.scss']
 })

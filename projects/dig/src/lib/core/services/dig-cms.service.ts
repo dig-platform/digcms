@@ -6,6 +6,9 @@ import {ContentNode} from '../../page/interfaces/content-node';
 import { getFunctions, httpsCallable } from "firebase/functions";
 import {AuthService} from '../../user/services/auth.service';
 import {Firebase} from '../../dig';
+import {Shortcut} from '../../ui/interfaces/shortcut';
+import {Store} from '@ngrx/store';
+import {addShortcut} from '../../ui/state/editor/editor.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +18,7 @@ export class DigCmsService {
     adminUser: 'dig-user-hasOwner'
   }
   constructor(
+    private store: Store,
     private firebase: Firebase,
     private auth: AuthService,
     private contentNodeService: ContentNodeService,
@@ -62,6 +66,10 @@ export class DigCmsService {
       }
     });
     return errors;
+  }
+
+  addShortcut(shortcut: Shortcut) {
+    return this.store.dispatch(addShortcut({shortcut}));
   }
 
 

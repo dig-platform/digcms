@@ -4,3 +4,8 @@ import * as fromEditor from './editor.reducer';
 export const selectEditorState = createFeatureSelector<fromEditor.State>(
   fromEditor.editorFeatureKey
 );
+
+export const selectShortcuts = createSelector(
+  selectEditorState,
+  state => ([...state.shortcuts])
+)
