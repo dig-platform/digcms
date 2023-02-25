@@ -1,5 +1,6 @@
 import {FirebaseOptions, initializeApp, FirebaseApp} from 'firebase/app';
 import {config} from 'rxjs';
+import {Shortcut} from './ui/interfaces/shortcut';
 
 export class Firebase implements FirebaseApp{
   automaticDataCollectionEnabled!: boolean;
@@ -14,6 +15,10 @@ export const provideFirebase = (config: FirebaseOptions) => (
 );
 
 export interface DigConfig {
+  editor?: {
+    title?: string;
+    shortcuts?: Shortcut[];
+  }
   firebase: {
     apiKey: string;
     authDomain: string;
@@ -29,7 +34,7 @@ export interface DigConfig {
 export class Dig {
   firebase!: Firebase;
 
-  constructor(private config: DigConfig) {
+  constructor(readonly config: DigConfig) {
   }
 }
 

@@ -1,8 +1,6 @@
-# Extending Digitalus CMS
+# Customizing Digitalus CMS
 
 ## Shortcuts
-
-![Digitalus Shortcuts](./screenshots/shortcuts.png "Project shortcuts in Digitalus Editor")
 
 Shortcuts are links which are added to the top of the Digitalus UI. This is the easiest way
 to add custom functionality to your CMS.
@@ -19,3 +17,6 @@ constructor(private dig: DigCmsService) {
   })
 }
 ```
+
+
+![Digitalus Shortcuts](./screenshots/shortcuts.png "Project shortcuts in Digitalus Editor")

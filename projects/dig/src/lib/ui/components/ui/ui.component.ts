@@ -23,6 +23,8 @@ import {UserNavComponent} from '../../../user/components/user-nav/user-nav.compo
 import {BlogNavComponent} from '../../../blog/components/blog-nav/blog-nav.component';
 import {selectPanelState} from '../../../core/state/dig/dig.selectors';
 import {ShortcutNavComponent} from '../../../shortcuts/components/shortcut-nav/shortcut-nav.component';
+import {loadEditor} from '../../state/editor/editor.actions';
+import {selectEditorTitle} from '../../state/editor/editor.selectors';
 
 @Component({
   selector: 'app-ui',
@@ -56,9 +58,11 @@ import {ShortcutNavComponent} from '../../../shortcuts/components/shortcut-nav/s
 export class UiComponent {
   @Input() fullscreen: boolean = false;
   readonly panels$ = this.store.select(selectPanelState);
+  readonly title$ = this.store.select(selectEditorTitle);
 
   constructor(private store: Store) {
-    this.store.dispatch(loadDig())
+    this.store.dispatch(loadDig());
+    this.store.dispatch(loadEditor());
     this.store.dispatch(persistUiState());
   }
   setMenuState($event: boolean) {

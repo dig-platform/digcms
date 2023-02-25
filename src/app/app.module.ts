@@ -21,6 +21,19 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     DigModule.forRoot({
+      editor: {
+        title: 'Digitalus CMS',
+        shortcuts: [
+          {
+            title: 'Tours',
+            path: '/tours',
+            // optional description, displays a tooltip
+            description: 'Manage tours and trips',
+            // optional icon, see https://fonts.google.com/icons
+            icon: 'tour',
+          }
+        ]
+      },
       firebase: {
         apiKey: "AIzaSyCsXhq40XSFcsP9Pmz_LBFW_NT5ydhfVhw",
         authDomain: "dig-cms-64717.firebaseapp.com",
