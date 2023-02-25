@@ -1,0 +1,18 @@
+<div class="shortcut-nav">
+  <button *ngIf="false" disabled mat-flat-button class="add" color="primary" (click)="create()">
+    Add new shortcut
+    <mat-icon>add</mat-icon>
+  </button>
+  <mat-list class="nav-list">
+    <a
+      mat-list-item
+      *ngFor="let shortcut of shortcuts$ | async"
+      routerLinkActive="active"
+      [routerLink]="shortcut.path">
+      <mat-icon matListItemIcon *ngIf="shortcut.icon">{{shortcut.icon}}</mat-icon>
+      {{shortcut.title}}</a>
+  </mat-list>
+  <button *ngIf="false" disabled mat-button routerLink="/dig-cms/shortcuts">
+    View All
+  </button>
+</div>

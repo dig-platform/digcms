@@ -25,6 +25,8 @@ import * as fromUser from './user/state/users/user.reducer';
 import * as fromPost from './blog/state/post/post.reducer';
 import {PostEffects} from './blog/state/post/post.effects';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import * as fromEditor from './ui/state/editor/editor.reducer';
+import {EditorEffects} from './ui/state/editor/editor.effects';
 
 // minimal version, requires you to setup:
 // * ngrx
@@ -56,6 +58,7 @@ export class DigModuleMin { }
     StoreModule.forFeature(fromMedia.mediaFeatureKey, fromMedia.reducer),
     StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducer),
     StoreModule.forFeature(fromPost.postFeatureKey, fromPost.reducer),
+    StoreModule.forFeature(fromEditor.editorFeatureKey, fromEditor.reducer),
     EffectsModule.forFeature([
       SettingsEffects,
       PluginEffects,
@@ -66,7 +69,8 @@ export class DigModuleMin { }
       MediaEffects,
       AuthEffects,
       UserEffects,
-      PostEffects
+      PostEffects,
+      EditorEffects
     ]),
   ],
   exports: [
