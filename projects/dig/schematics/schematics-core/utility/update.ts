@@ -1,12 +1,11 @@
 import {
   Rule,
-  SchematicContext,
   Tree,
   SchematicsException,
 } from '@angular-devkit/schematics';
 
 export function updatePackage(name: string): Rule {
-  return (tree: Tree, context: SchematicContext) => {
+  return (tree: Tree) => {
     const pkgPath = '/package.json';
     const buffer = tree.read(pkgPath);
     if (buffer === null) {
