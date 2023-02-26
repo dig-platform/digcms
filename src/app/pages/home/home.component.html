@@ -12,7 +12,7 @@
         <mat-grid-tile *ngFor="let block of howItWorks.blocks">
           <mat-card>
             <div class="card-icon">
-              <mat-icon>edit_note</mat-icon>
+              <mat-icon>{{block.icon}}</mat-icon>
             </div>
             <mat-card-title>
               <h3>{{block.title}}</h3>

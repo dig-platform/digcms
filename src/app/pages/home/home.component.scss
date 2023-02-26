@@ -12,10 +12,10 @@ $blue: mat.define-palette(mat.$blue-palette);
   padding: 2.5rem;
   text-align: center;
   mat-grid-list{
-    margin: 2rem;
+    margin: 0 2rem;
     mat-card{
-      margin: .5rem;
-      height: 240px;
+      height: auto;
+      margin:0 .5rem;
       background: mat.get-color-from-palette($blue, 800);
       .card-icon{
         mat-icon{
