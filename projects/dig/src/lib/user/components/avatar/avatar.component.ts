@@ -20,6 +20,6 @@ export class AvatarComponent {
 
 
   constructor(private auth: AuthService) {
-    this.auth.role().subscribe(console.log);
+    // this.auth.role().subscribe(console.log);
   }
 }
