@@ -41,6 +41,7 @@ export class GridComponent implements PluginForm{
   addBlock() {
     this.blocks.push(new FormGroup({
       title: new FormControl(),
+      icon: new FormControl(),
       content: new FormControl()
     }))
   }

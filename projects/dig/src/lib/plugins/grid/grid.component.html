@@ -1,11 +1,11 @@
 <div class="hero-plugin-form" [formGroup]="form">
   <mat-form-field appearance="outline">
     <mat-label>Title</mat-label>
-    <input matInput formControlName="title">
+    <input name="grid-title" matInput formControlName="title">
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Subtitle</mat-label>
-    <input matInput formControlName="subtitle">
+    <textarea rows="2" name="grid-subtitle" matInput formControlName="subtitle"></textarea>
   </mat-form-field>
 
   <div class="blocks"  cdkDropList (cdkDropListDropped)="drop($event)">
@@ -19,14 +19,24 @@
       <mat-card>
         <mat-form-field appearance="outline">
           <input matInput
+                 name="block-title"
                  formControlName="title"
                  placeholder="Block title">
         </mat-form-field>
         <mat-form-field appearance="outline">
           <textarea matInput
                     rows="4"
+                    name="block-content"
                  formControlName="content"
                     placeholder="Block content"></textarea>
+        </mat-form-field>
+        <h3>Media</h3>
+
+        <mat-form-field appearance="outline">
+          <input matInput
+                 name="block-icon"
+                 formControlName="icon"
+                 placeholder="Block icon">
         </mat-form-field>
       </mat-card>
       <div class="actions">

@@ -1,0 +1,39 @@
+@use 'sass:map';
+@use 'node_modules/@angular/material/index' as mat;
+
+$gray: mat.define-palette(mat.$gray-palette);
+$blue: mat.define-palette(mat.$blue-palette);
+
+#hero{
+  padding: 5rem;
+}
+
+#how-it-works{
+  padding: 2.5rem;
+  text-align: center;
+  mat-grid-list{
+    margin: 0 2rem;
+    mat-card{
+      height: auto;
+      margin:0 .5rem;
+      background: mat.get-color-from-palette($blue, 800);
+      .card-icon{
+        mat-icon{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 2.5rem;
+          height: 64px;
+          width: 64px;
+          background: #fff;
+          color: mat.get-color-from-palette($blue, 800);
+          border-radius: 32px;
+          overflow: hidden;
+          height: 64px;
+          width: 64px;
+          font-size: 32px;
+        }
+      }
+    }
+  }
+}
