@@ -1,1 +1,28 @@
-<p>home works!</p>
+<app-layout>
+  <div class="home"  *ngIf="content$ | async as content">
+    <section id="hero" *ngIf="content.hero as heroContent">
+      <h1>{{heroContent.title}}</h1>
+      <p>{{heroContent.subtitle}}</p>
+      <a mat-flat-button [href]="heroContent.link">{{heroContent.cta}}</a>
+    </section>
+    <section id="how-it-works" *ngIf="content['how-it-works'] as howItWorks">
+      <h1>{{howItWorks.title}}</h1>
+      <p>{{howItWorks.subtitle}}</p>
+      <mat-grid-list cols="3">
+        <mat-grid-tile *ngFor="let block of howItWorks.blocks">
+          <mat-card>
+            <div class="card-icon">
+              <mat-icon>edit_note</mat-icon>
+            </div>
+            <mat-card-title>
+              <h3>{{block.title}}</h3>
+            </mat-card-title>
+            <mat-card-content>
+              <p>{{block.content}}</p>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+  </div>
+</app-layout>

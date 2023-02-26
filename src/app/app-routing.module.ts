@@ -14,7 +14,8 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: 'home'
-  }
+  },
+  { path: 'quickstart', loadChildren: () => import('./pages/quickstart/quickstart.module').then(m => m.QuickstartModule) }
 ];
 
 @NgModule({
