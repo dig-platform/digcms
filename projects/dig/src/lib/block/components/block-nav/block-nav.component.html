@@ -8,7 +8,7 @@
       mat-list-item
       *ngFor="let block of blocks$ | async"
       routerLinkActive="active"
-      routerLink="/dig-cms/blocks/{{block.id}}">
+      href="/dig-cms/blocks/{{block.id}}">
       <mat-icon matListItemIcon>grid_view</mat-icon>
       {{block.name}}</a>
   </mat-list>

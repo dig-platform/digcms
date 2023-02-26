@@ -53,9 +53,10 @@ export class PluginFormComponent implements OnChanges, OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     // we only want to reload this form if the content node or the type has changed
     // todo handle type change
-    if (! this.currentNode || this.contentNode.id !== this.currentNode.id) {
-      this.loadControl();
-    }
+    // if (! this.currentNode || this.contentNode.id !== this.currentNode.id) {
+    //   this.loadControl();
+    // }
+    this.loadControl();
   }
 
   async loadControl() {

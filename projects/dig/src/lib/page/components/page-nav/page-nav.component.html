@@ -7,7 +7,7 @@
     mat-list-item
     *ngFor="let page of pages$ | async"
     routerLinkActive="active"
-    routerLink="/dig-cms/pages/{{page.id}}">
+    href="/dig-cms/pages/{{page.id}}">
     <mat-icon matListItemIcon>article</mat-icon>
     {{page.name}}</a>
 </mat-list>
