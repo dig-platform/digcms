@@ -60,6 +60,16 @@ Hit enter after you select these features.
 2. Enable ESLint if you want
 3. Install the dependencies
 
+Now open your `functions/index.js' file and add the following code:
+
+```javascript
+const functions = require("firebase-functions");
+const admin = require('firebase-admin');
+admin.initializeApp();
+
+exports.dig = require("@dig-platform/dig-functions");
+```
+
 > We are currently working on the TypeScript version of our functions
 > but there are some weird Node version issues that need to be addressed first
 
