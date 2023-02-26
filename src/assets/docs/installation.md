@@ -64,6 +64,21 @@ Then add the root store to your module
 > Note that for some reason the @ngrx/store module is automatically imported into to the app module,
 > but the effects are not
 
+### Install Markdown
+
+Add the following scripts to your `angular.json` file (`/projects/my-project/architect/build/options/scripts`)
+
+```javascript
+"scripts": [
+  "node_modules/marked/marked.min.js",
+  "node_modules/prismjs/prism.js",
+  "node_modules/prismjs/components/prism-typescript.js",
+  "node_modules/prismjs/components/prism-json.js",
+  "node_modules/prismjs/components/prism-css.js",
+  "node_modules/clipboard/dist/clipboard.min.js"
+]
+```           
+
 ### Create your Firebase project
 
 See the [platform](./platform.md) page for step-by-step instructions to create and configure your platform.
