@@ -59,8 +59,10 @@ export class PageService {
   }
 
   async createPage(data: NewPage): Promise<Page> {
+    const path = data.path ? data.path : data.name;
     const page = {
       ...data,
+      path,
       status: PAGE_DRAFT,
       metadata: {
         ...data.metadata,
