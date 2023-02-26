@@ -85,7 +85,9 @@ Then add the DigModule to your app module with the configuration
     imports: [
         // ...
         DigModule.forRoot({
-          title: 'My New Site',
+          editor: {
+            title: 'My New Site'
+          },
           firebase: {
               apiKey: "...",
               authDomain: "...",
