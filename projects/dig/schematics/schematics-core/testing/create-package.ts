@@ -1,7 +1,5 @@
-import { Tree } from '@angular-devkit/schematics';
 import {
   UnitTestTree,
-  SchematicTestRunner,
 } from '@angular-devkit/schematics/testing';
 
 export const packagePath = '/package.json';

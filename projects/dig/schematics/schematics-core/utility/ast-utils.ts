@@ -16,7 +16,6 @@ import {
   RemoveChange,
   createRemoveChange,
 } from './change';
-import { Path } from '@angular-devkit/core';
 
 /**
  * Find all nodes from the AST in the subtree of node of SyntaxKind kind.
@@ -819,7 +818,7 @@ export function insertImport(
 
 export function replaceImport(
   sourceFile: ts.SourceFile,
-  path: Path,
+  // path: Path,
   importFrom: string,
   importAsIs: string,
   importToBe: string

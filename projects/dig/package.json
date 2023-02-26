@@ -1,6 +1,6 @@
 {
   "name": "@dig-platform/dig",
-  "version": "15.0.5",
+  "version": "15.0.6",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
     "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/dig/"

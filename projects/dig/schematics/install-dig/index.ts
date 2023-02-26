@@ -29,7 +29,7 @@ import {
 } from '../schematics-core';
 // Just return the tree
 export function installDig(): Rule {
-  return (tree: Tree, context: SchematicContext) => {
+  return (tree: Tree) => {
     // const installTaskId = context.addTask(new NodePackageInstallTask());
     return tree;
   };

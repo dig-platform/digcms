@@ -130,7 +130,6 @@ export function addReducerToActionReducerMap(
   reducersPath: string,
   options: { name: string; plural: boolean }
 ): Change {
-  let initializer: any;
   const actionReducerMap: any = source.statements
     .filter((stm) => stm.kind === ts.SyntaxKind.VariableStatement)
     .filter((stm: any) => !!stm.declarationList)
