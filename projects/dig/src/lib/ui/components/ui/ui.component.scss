@@ -14,8 +14,6 @@ mat-sidenav-container{
 
 mat-sidenav{
   width: 240px;
-  background-image: url("../../../../../../assets/images/mask.svg");
-  background-position: bottom;
   background-color: mat.get-color-from-palette($blue, 50);
   background-repeat: no-repeat;
   .title{

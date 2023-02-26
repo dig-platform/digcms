@@ -15,13 +15,8 @@
     </mat-card>
   </div>
   <ng-container *ifAuth="true">
-    <ng-container *ngIf="appCheck; else appSetup">
-      <app-ui>
-        <router-outlet></router-outlet>
-      </app-ui>
-    </ng-container>
-    <ng-template #appSetup>
-      <dig-app-setup (valid)="appCheck = $event"></dig-app-setup>
-    </ng-template>
+    <app-ui>
+      <router-outlet></router-outlet>
+    </app-ui>
   </ng-container>
 </div>
