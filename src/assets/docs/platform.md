@@ -14,11 +14,12 @@ npm install -g firebase-tools
 
 1. Go to https://console.firebase.google.com/
 2. Create a new project
-3. Enable Firestore Database
-4. Enable Cloud Storage
-5. Enable Authentication with the Google Auth Provider
-6. Create a new web app
-7. Copy the Firebase configuration settings
+3. Enable the Google Auth provider in Authentication
+4. Enable Firestore Database
+5. Enable Cloud Storage
+6. Enable Authentication with the Google Auth Provider
+7. Create a new web app
+8. Copy the Firebase configuration settings
 
 > note that you must upgrade Firebase to the `Blaze` pay as you go plan
 > to enable the required functions
